@@ -40,7 +40,7 @@ const LoginScreen = () => {
           </div>
         </div>
 
-        <Link className="link">
+        <Link to="/auth/register" className="link">
           Create new account
         </Link>
       </form>

@@ -1,4 +1,4 @@
-const { Link } = require("react-router-dom")
+const { Link } = require("react-router-dom");
 
 const RegisterScreen = () => {
   return (
@@ -6,6 +6,14 @@ const RegisterScreen = () => {
       <h2 className="auth__title">Register Screen</h2>
 
       <form>
+        <input
+          autoComplete="off"
+          className="auth__input"
+          type="text"
+          placeholder="name"
+          name="name"
+        />
+
         <input
           autoComplete="off"
           className="auth__input"
@@ -21,27 +29,22 @@ const RegisterScreen = () => {
           name="password"
         />
 
-        <input  className="btn btn-primary btn-block" type="submit" value="login" />
+        <input
+          autoComplete="off"
+          className="auth__input"
+          type="password"
+          placeholder="confirm password"
+          name="password"
+        />
 
-        <hr />
-        <div className="auth__social-networks">
-          <p>Login with social networks</p>
-          <div className="google-btn">
-            <div className="google-icon-wrapper">
-              <img
-                className="google-icon"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt="google button"
-              />
-            </div>
-            <p className="btn-text">
-              <b>Sign in with google</b>
-            </p>
-          </div>
-        </div>
+        <input
+          className="btn btn-primary btn-block mb-5"
+          type="submit"
+          value="login"
+        />
 
         <Link to="/auth/login" className="link">
-          Go to login
+          Already registered?
         </Link>
       </form>
     </>

@@ -1,8 +1,10 @@
+import AppRouter from "./routers/AppRouter";
+
+
+
 const JournalApp = () => {
     return ( 
-        <h1>
-            Journal app
-        </h1>
+        <AppRouter/>
      );
 }
  

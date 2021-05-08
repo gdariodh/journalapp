@@ -1,3 +1,5 @@
+const { Link } = require("react-router-dom")
+
 const LoginScreen = () => {
   return (
     <>
@@ -37,6 +39,10 @@ const LoginScreen = () => {
             </p>
           </div>
         </div>
+
+        <Link className="link">
+          Create new account
+        </Link>
       </form>
     </>
   );

@@ -14,3 +14,45 @@
     padding: 20px;
     width: 250px;
 }
+
+.auth__title{
+    text-align: center;
+    // fn scss para oscurecer un color
+    color: darken($color: $primary, $amount: 20);
+    margin-bottom: 20px;
+}
+
+.auth__input{
+    color: $dark-grey;
+    border: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $light-grey;
+    height: 20px;
+    width: 100%;
+    transition: border-bottom .3s ease;
+
+    &:focus{
+        border-bottom: 1px solid $primary;
+        outline: none;
+    }
+}
+
+.auth__social-networks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.auth__alert-error{
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}

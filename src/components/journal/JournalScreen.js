@@ -1,5 +1,6 @@
 import Sidebar from "./Sidebar";
-
+// cuando no haya nada seleccionado
+import NothingSelected from "./NothingSelected";
 
 const JournalScreen = () => {
   return (
@@ -8,7 +9,7 @@ const JournalScreen = () => {
       <Sidebar/>
 
       <main>
-          <h1>Main content</h1>
+          <NothingSelected/>
       </main>
     </div>
   );

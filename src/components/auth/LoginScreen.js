@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+// dispatch -> invocar un action
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/actions/authAction";
+// actions
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -18,6 +24,13 @@ const LoginScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!data.email && !data.password) {
+      return alert("ingrese los datos");
+    }
+
+    // pasa objeto user al Login Action
+    dispatch(login(123, "gaby"));
 
     // reset
     setData({

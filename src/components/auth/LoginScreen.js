@@ -1,17 +1,44 @@
-const { Link } = require("react-router-dom")
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const LoginScreen = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = data;
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // reset
+    setData({
+      email: "",
+      password: "",
+    });
+  };
+
   return (
     <>
       <h2 className="auth__title">Login Screen</h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           autoComplete="off"
           className="auth__input"
           type="text"
           placeholder="email"
           name="email"
+          onChange={handleChange}
+          value={email}
         />
         <input
           autoComplete="off"
@@ -19,9 +46,15 @@ const LoginScreen = () => {
           type="password"
           placeholder="password"
           name="password"
+          onChange={handleChange}
+          value={password}
         />
 
-        <input  className="btn btn-primary btn-block" type="submit" value="login" />
+        <input
+          className="btn btn-primary btn-block"
+          type="submit"
+          value="login"
+        />
 
         <hr />
         <div className="auth__social-networks">

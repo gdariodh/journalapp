@@ -1,7 +1,7 @@
 import { types } from "../types";
 
 const initialState = {
-    name: 'test'
+    name: ''
 }
 
 

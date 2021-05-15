@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 // dispatch -> invocar un action
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/actions/authAction";
+import { login, startLoginEmailPassword } from "../../redux/actions/authAction";
 // actions
 
 const LoginScreen = () => {
@@ -30,7 +30,7 @@ const LoginScreen = () => {
     }
 
     // pasa objeto user al Login Action
-    dispatch(login(123, "gaby"));
+    dispatch(startLoginEmailPassword(email, password));
 
     // reset
     setData({

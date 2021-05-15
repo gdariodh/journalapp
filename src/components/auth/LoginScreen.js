@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 // dispatch -> invocar un action
 import { useDispatch } from "react-redux";
-import { login, startLoginEmailPassword } from "../../redux/actions/authAction";
+import { login, startLoginEmailPassword, startLoginGoogleLogin } from "../../redux/actions/authAction";
 // actions
 
 const LoginScreen = () => {
@@ -39,6 +39,8 @@ const LoginScreen = () => {
     });
   };
 
+  const handleLoginWithGoogle = () => dispatch(startLoginGoogleLogin())
+
   return (
     <>
       <h2 className="auth__title">Login Screen</h2>
@@ -72,7 +74,7 @@ const LoginScreen = () => {
         <hr />
         <div className="auth__social-networks">
           <p>Login with social networks</p>
-          <div className="google-btn">
+          <div onClick={handleLoginWithGoogle} className="google-btn">
             <div className="google-icon-wrapper">
               <img
                 className="google-icon"

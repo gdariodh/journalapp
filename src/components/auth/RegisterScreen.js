@@ -3,7 +3,7 @@ import { useState } from "react";
 import validator from "validator";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { setError } from "../../redux/actions/uiAction";
+import { setError, removeError } from "../../redux/actions/uiAction";
 
 const { Link } = require("react-router-dom");
 
@@ -53,6 +53,8 @@ const RegisterScreen = () => {
       );
       return false;
     }
+
+    dispatch(removeError())
 
     return true;
   };

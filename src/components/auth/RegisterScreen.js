@@ -2,13 +2,16 @@ import { useState } from "react";
 // npm validator
 import validator from "validator";
 // redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../redux/actions/uiAction";
 
 const { Link } = require("react-router-dom");
 
 const RegisterScreen = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // invocar action redux
+
+  // accede state con useSelector
+  const { msgError } = useSelector((state) => state.ui);
 
   const [data, setData] = useState({
     name: "",
@@ -74,7 +77,7 @@ const RegisterScreen = () => {
       <h2 className="auth__title">Register Screen</h2>
 
       <form onSubmit={handleSubmit}>
-        <div className="auth__alert-error">hola</div>
+        {msgError && <div className="auth__alert-error">{msgError}</div>}
 
         <input
           onChange={handleChange}

@@ -54,7 +54,7 @@ const RegisterScreen = () => {
       return false;
     }
 
-    dispatch(removeError())
+    dispatch(removeError());
 
     return true;
   };
@@ -62,9 +62,12 @@ const RegisterScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (isFormValid()) {
-      console.log("Form correcto");
-    }
+    // si es false no ejecutes lo siguiente
+    if (!isFormValid()) return;
+
+    // a partir de aca isFormValid es true y todo corecto :)
+
+    alert("form correcto");
 
     setData({
       name: "",

@@ -3,9 +3,11 @@ import { useState } from "react";
 import validator from "validator";
 // redux
 import { useDispatch, useSelector } from "react-redux";
+// actions redux
 import { setError, removeError } from "../../redux/actions/uiAction";
+import { registerWithEmailPassword } from "../../redux/actions/authAction";
 
-const { Link } = require("react-router-dom");
+import { Link } from "react-router-dom";
 
 const RegisterScreen = () => {
   const dispatch = useDispatch(); // invocar action redux
@@ -67,7 +69,10 @@ const RegisterScreen = () => {
 
     // a partir de aca isFormValid es true y todo corecto :)
 
-    alert("form correcto");
+    // alert("form correcto");
+
+    // mandamos al action el objeto user
+    dispatch(registerWithEmailPassword(data))
 
     setData({
       name: "",

@@ -21,10 +21,20 @@ export const startLoginGoogleLogin = () => {
 
 // actions asincronos with thunk
 export const startLoginEmailPassword = (email, password) => {
-  return (dispatch) => {
-    setTimeout(() => {
-      dispatch(login(email, password));
-    }, 3500);
+  return async (dispatch) => {
+
+
+    try {
+      const user = await firebase.auth().signInWithEmailAndPassword(email,password)
+      console.log(user);
+      dispatch(login(user.user.uid, user.user.displayName)) 
+    } catch (error) {
+      console.log(error);
+    }
+
+    // setTimeout(() => {
+    //   dispatch(login(email, password));
+    // }, 3500);
   };
 };
 

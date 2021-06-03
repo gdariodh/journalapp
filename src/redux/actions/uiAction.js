@@ -10,3 +10,11 @@ export const setError = (err) => ({
 export const removeError = () => ({
     type: types.uiRemoveError
 });
+
+export const startLoginUi = () => ({
+    type: types.uiStartLogin
+})
+
+export const endLoginUi = () => ({
+    type: types.uiEndLogin
+})

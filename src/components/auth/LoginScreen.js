@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 // dispatch -> invocar un action
 import { useDispatch, useSelector } from "react-redux";
-import { login, startLoginEmailPassword, startLoginGoogleLogin } from "../../redux/actions/authAction";
+import { startLoginEmailPassword, startLoginGoogleLogin } from "../../redux/actions/authAction";
 // actions
 
 const LoginScreen = () => {

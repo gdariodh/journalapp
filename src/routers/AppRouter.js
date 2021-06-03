@@ -26,6 +26,7 @@ const AppRouter = () => {
         dispatch(login(user.uid, user.displayName));
       }
     });
+    // eslint-disable-next-line
   }, []);
 
   return (

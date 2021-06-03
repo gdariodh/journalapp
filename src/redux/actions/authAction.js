@@ -1,5 +1,7 @@
 import { types } from "../types";
 import { firebase, googleAuthProvider } from "../../firebase/firebaseConfig";
+// otros actions
+import { startLoginUi, endLoginUi } from "../../redux/actions/uiAction";
 
 // dispatch invoca el action
 
@@ -10,7 +12,7 @@ export const startLoginGoogleLogin = () => {
         .auth()
         .signInWithPopup(googleAuthProvider);
       const { displayName, uid } = user;
-      dispatch(login(uid, displayName))
+      dispatch(login(uid, displayName));
     } catch (error) {
       console.log(error);
     }
@@ -22,22 +24,22 @@ export const startLoginGoogleLogin = () => {
 // actions asincronos with thunk
 export const startLoginEmailPassword = (email, password) => {
   return async (dispatch) => {
-
+    // bloquea btn login mientras se hace consulta, asi evita clicks de mas en login
+    dispatch(startLoginUi());
 
     try {
-      const user = await firebase.auth().signInWithEmailAndPassword(email,password)
+      const user = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
       console.log(user);
-      dispatch(login(user.user.uid, user.user.displayName)) 
+      dispatch(login(user.user.uid, user.user.displayName));
     } catch (error) {
       console.log(error);
     }
-
-    // setTimeout(() => {
-    //   dispatch(login(email, password));
-    // }, 3500);
+    // pone false el loading y habilita el btn login
+    dispatch(endLoginUi());
   };
 };
-
 
 // este action se comunica con el reducer
 export const login = (uid, displayName) => ({
@@ -48,22 +50,21 @@ export const login = (uid, displayName) => ({
   },
 });
 
-
 // register with EmailPassword
 export const registerWithEmailPassword = (dataUser) => {
-  return async(dispatch) => {
+  return async (dispatch) => {
     try {
-      const {email, password, name} = dataUser;
-      const newUser = await firebase.auth().createUserWithEmailAndPassword(email,password);
-      // add username to newUser 
-      await newUser.user.updateProfile({displayName:name})
-      
+      const { email, password, name } = dataUser;
+      const newUser = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      // add username to newUser
+      await newUser.user.updateProfile({ displayName: name });
+
       // pasamos displayName y uid
-      dispatch(login(newUser.user.uid, newUser.user.displayName))
-
+      dispatch(login(newUser.user.uid, newUser.user.displayName));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
-  }
-}
+  };
+};

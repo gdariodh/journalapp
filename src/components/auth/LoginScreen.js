@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 // dispatch -> invocar un action
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, startLoginEmailPassword, startLoginGoogleLogin } from "../../redux/actions/authAction";
 // actions
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
+
+  // acceder al loading que bloquea el btn mientras hace la consulta
+  const {loading} = useSelector(state => state.ui)
 
   const [data, setData] = useState({
     email: "",
@@ -69,7 +72,10 @@ const LoginScreen = () => {
           className="btn btn-primary btn-block"
           type="submit"
           value="login"
+          disabled={loading}
         />
+
+        {/* disabled={cuando loading sea true, no escuchas click y bloqueo} */}
 
         <hr />
         <div className="auth__social-networks">

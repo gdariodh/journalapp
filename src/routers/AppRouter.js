@@ -19,6 +19,7 @@ const AppRouter = () => {
 
   // hacer loading global de la app, pone en espera al user mientras comprueba si tiene un tokenAuth
   const [checking, setChecking] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     // revisa si existe user, y lo loguea apenas cargue la app
@@ -27,12 +28,15 @@ const AppRouter = () => {
         // mandamos el user encontrado y lo logueamos
         // login(uid, displayName)
         dispatch(login(user.uid, user.displayName));
-
-        setChecking(false);
+        setIsLoggedIn(true)
+      }else{
+        setIsLoggedIn(false)
       }
+
+      setChecking(false);
     });
     // eslint-disable-next-line
-  }, [checking]);
+  }, [checking, isLoggedIn]);
 
   // retorna una pantalla de carga - un component
   if (checking) {

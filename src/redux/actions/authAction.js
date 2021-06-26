@@ -1,7 +1,9 @@
+import Swal from "sweetalert2";
 import { types } from "../types";
 import { firebase, googleAuthProvider } from "../../firebase/firebaseConfig";
 // otros actions
 import { startLoginUi, endLoginUi } from "../../redux/actions/uiAction";
+
 
 // dispatch invoca el action
 
@@ -35,6 +37,9 @@ export const startLoginEmailPassword = (email, password) => {
       dispatch(login(user.user.uid, user.user.displayName));
     } catch (error) {
       console.log(error);
+      Swal.fire(
+        'Error',error.message,'error'
+      )
     }
     // pone false el loading y habilita el btn login
     dispatch(endLoginUi());
@@ -65,6 +70,9 @@ export const registerWithEmailPassword = (dataUser) => {
       dispatch(login(newUser.user.uid, newUser.user.displayName));
     } catch (error) {
       console.log(error);
+      Swal.fire(
+        'Error',error.message,'error'
+      )
     }
   };
 };

@@ -13,6 +13,9 @@ import { firebase } from "../firebase/firebaseConfig";
 // redux
 import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/authAction";
+// rutas protegidas
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -49,7 +52,7 @@ const AppRouter = () => {
     <Router>
       <Switch>
         <Route path="/auth" component={AuthRouter} />
-        <Route exact path="/" component={JournalScreen} />
+        <PrivateRoute isAuth={isLoggedIn} exact path="/" component={JournalScreen} />
         <Redirect to="/auth/login" />
       </Switch>
     </Router>

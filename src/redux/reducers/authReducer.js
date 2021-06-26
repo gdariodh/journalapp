@@ -14,11 +14,9 @@ export const authReducer = (state = initialState, action) => {
         name: action.payload.displayName,
       };
 
+      // devolvemos un objeto vacio, para que se reinicie todo el state
     case types.logout:
-        return{
-            name: null,
-            uid: null
-        }
+        return{}
 
     default:
       return state;

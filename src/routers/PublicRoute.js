@@ -10,7 +10,7 @@ const PublicRoute = ({ isAuth, component: Component, ...rest }) => {
       <Route
         {...rest}
         component={(props) =>
-          !isAuth ? <Component {...props} /> : <Redirect to="/" />
+          !isAuth ? <Component {...props} /> : <Redirect to="/auth/login" />
         }
       />
       {/* 

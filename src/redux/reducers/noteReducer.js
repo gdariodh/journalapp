@@ -5,7 +5,7 @@ const initialState = {
     active: null,
 }
 
-export const authReducer = (state = initialState, action) => {
+export const noteReducer = (state = initialState, action) => {
   switch (action.type) {
 
     default:
